@@ -8,7 +8,6 @@ Features Completed:
 	4. Manager login and homepage
 	5. Manager can view all requests
 	6. Manager can accept/decline all requests
-	7. Logs are saved every time database is accessed
 
 
 In order to setup the database, run the sql script provided
