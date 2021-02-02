@@ -46,9 +46,9 @@ public class ReimbursementRequestInfoServlet extends HttpServlet{
 		
 		UserAccount user = verifyUser(token);
 		
-		System.out.printf("%d GET request to ReimbursementRequestInfoServlet\n", count++);
-		System.out.println(token);
-		System.out.println(rToken + "\n");
+//		System.out.printf("%d GET request to ReimbursementRequestInfoServlet\n", count++);
+//		System.out.println(token);
+//		System.out.println(rToken + "\n");
 		
 		boolean requestIsValid = false;
 		if(user != null && rToken != null) {
@@ -152,10 +152,10 @@ public class ReimbursementRequestInfoServlet extends HttpServlet{
 		
 		UserAccount user = verifyUser(token);
 		
-		System.out.printf("%d POST request to ReimbursementRequestInfoServlet\n", count++);
-		System.out.println(token);
-		System.out.println(strReimbursementToken);
-		System.out.println(rToken + "\n");
+//		System.out.printf("%d POST request to ReimbursementRequestInfoServlet\n", count++);
+//		System.out.println(token);
+//		System.out.println(strReimbursementToken);
+//		System.out.println(rToken + "\n");
 		
 		boolean requestIsValid = false;
 		if(user != null && rToken != null) {
@@ -206,10 +206,10 @@ public class ReimbursementRequestInfoServlet extends HttpServlet{
 		
 		UserAccount user = verifyUser(token);
 		
-		System.out.printf("%d PUT request to ReimbursementRequestInfoServlet\n", count++);
-		System.out.println(token);
-		System.out.println(strReimbursementToken);
-		System.out.println(rToken + "\n");
+//		System.out.printf("%d PUT request to ReimbursementRequestInfoServlet\n", count++);
+//		System.out.println(token);
+//		System.out.println(strReimbursementToken);
+//		System.out.println(rToken + "\n");
 		
 		boolean requestIsValid = false;
 		if(user != null && rToken != null) {

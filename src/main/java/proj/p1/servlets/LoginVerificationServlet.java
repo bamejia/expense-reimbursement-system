@@ -19,28 +19,11 @@ import proj.p1.services.ManagerServices;
 
 public class LoginVerificationServlet extends HttpServlet {
 	
-	private static int count = 0;
+//	private static int count = 0;
 	
 	private static final long serialVersionUID = 1L;
 	private ManagerServices managerServices = new ManagerServices();
 	private EmployeeServices employeeServices = new EmployeeServices();
-	
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//		System.out.println("GET request to Login Verification Servlet");
-//		String accountType = request.getParameter("type");
-//		System.out.println("requesting type: "+ accountType);
-//		
-//		response.setStatus(201);
-//		try(PrintWriter pw = response.getWriter();){
-//			if(accountType != null && accountType.equals("employee")) {
-//				pw.write("Hello Fam!");
-//			}else if(accountType != null && accountType.equals("manager")) {
-//				pw.write("Hello Manager!");
-//			}else {
-//				pw.write("Who you is?!");
-//			}
-//		}
-//	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		ObjectMapper om = new  ObjectMapper();
@@ -52,10 +35,10 @@ public class LoginVerificationServlet extends HttpServlet {
 		String password = parent.path("password").asText();
 		
 		
-		System.out.printf("%d POST request to Login Verification Servlet\n", count++);
-		System.out.println("requesting type: "+ accountType);
+//		System.out.printf("%d POST request to Login Verification Servlet\n", count++);
+//		System.out.println("requesting type: "+ accountType);
 		
-		System.out.println(username + " " + password);
+//		System.out.println(username + " " + password);
 		
 		if(accountType != null && username != null && password != null) {
 			try(PrintWriter pw = response.getWriter();){
