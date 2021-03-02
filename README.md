@@ -2,7 +2,7 @@ Project: p1
 Devoloper: Bryan Mejia
 
 Features Completed:
-	1. Employee login and home page
+1. Employee login and home page
 	2. Employee can view pending and resolved requests
 	3. Employee can create new reimbursement requests
 	4. Manager login and homepage
