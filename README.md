@@ -5,9 +5,20 @@ saved into the database, and then manager users can accept or decline them.
 In order to setup the database, run the sql script provided
 
 ## Technologies Used
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+
+* Servlets
+* Java
+* JavaScript
+* HTML
+* CSS
+* JDBC
+* SQL
+* AJAX
+* Bootstrap
+* RDS
+* Tomcat
+* Git
+* Maven
 ## Features
 * Employee login and home page
 * Employee can view pending and resolved requests
