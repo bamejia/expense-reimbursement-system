@@ -1,0 +1,9 @@
+2021-02-02 18:53:11 WARN  ReimbursementRequestDAOImpl:51 method: getAllPendingRequests - Unable to retrieve all pending requests
+2021-02-02 18:53:11 WARN  ReimbursementRequestDAOImpl:206 method: createRequest - Unable to create requests for employee with ID: 1
+2021-02-02 18:53:11 WARN  ReimbursementRequestDAOImpl:137 method: getResolvedRequestsByEmployeeId - Unable to retrieve all resolved requests from employee with ID: 2
+2021-02-02 18:54:23 WARN  ReimbursementRequestDAOImpl:51 method: getAllPendingRequests - Unable to retrieve all pending requests
+2021-02-02 18:54:23 WARN  ReimbursementRequestDAOImpl:206 method: createRequest - Unable to create requests for employee with ID: 1
+2021-02-02 18:54:23 WARN  ReimbursementRequestDAOImpl:137 method: getResolvedRequestsByEmployeeId - Unable to retrieve all resolved requests from employee with ID: 2
+2021-02-02 18:55:23 INFO  ReimbursementRequestDAOImpl:49 method: getAllPendingRequests - Successfully retrieved all pending requests
+2021-02-02 18:55:23 INFO  ReimbursementRequestDAOImpl:204 method: createRequest - Successfully created request for employee with ID: 1
+2021-02-02 18:55:23 INFO  ReimbursementRequestDAOImpl:135 method: getResolvedRequestsByEmployeeId - Successfully retrieved all resolved requests by employee with ID: 2
