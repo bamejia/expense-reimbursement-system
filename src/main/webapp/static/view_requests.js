@@ -24,9 +24,9 @@ function updateNavbar(){
     }else{
         document.getElementById('home-nav-opt').removeAttribute("hidden");
         let parsedToken = token.split(":");
-        if(parsedToken[1] = "employee"){
+        if(parsedToken[1] == "employee"){
             document.getElementById('employee-requests-nav-opt').removeAttribute("hidden");
-        }else if(parsedToken[1] = "manager"){
+        }else if(parsedToken[1] == "manager"){
             document.getElementById('manager-requests-nav-opt').removeAttribute("hidden");
         }
     }
@@ -68,10 +68,19 @@ function renderPendingRequests(jsonPendingRequests){
     for (let request of pendingRequests) {
         let breakLine = document.createElement("br");
     
-        let requestLabel = document.createElement("label");
-        requestLabel.innerText =
-            `ID: ${request.id} | Amount: ${request.amount} | Status: ${request.status}.............................`;
-        
+        let requestSpan = document.createElement("span");
+        let requestIdStr = `Request ID: ${request.id}`.padEnd(18, " ");
+        let employeeIdStr = `| Employee ID: ${request.employeeId}`.padEnd(20, " ");
+        let amountStr = `| Amount: ${request.amount}`.padEnd(16, " ");
+        let statusStr = `| Status: ${request.status}`.padEnd(18, " ");
+
+        let requestSpanText = requestIdStr + employeeIdStr + amountStr + statusStr;
+        requestSpanText = requestSpanText.padEnd(120, ".");
+        requestSpanText += " ";
+        // requestSpanText = requestSpanText.split('').map(function(c) { return c === ' ' ? '&nbsp;' : c }).join('');
+        requestSpan.textContent = requestSpanText;
+        requestSpan.setAttribute("style", "font-family:monospace");
+        requestSpan.style.whiteSpace = "pre";
         
         let requestAcceptCheckbox = document.createElement("input");
         requestAcceptCheckbox.value = request.id;
@@ -81,7 +90,8 @@ function renderPendingRequests(jsonPendingRequests){
         requestAcceptCheckbox.className = "request-checkbox-accept";
 
         let requestAcceptLabel = document.createElement("label");
-        requestAcceptLabel.innerText = "Accept";
+        requestAcceptLabel.textContent = "Accept".padEnd(8, " ");
+        requestAcceptLabel.style.whiteSpace = "pre";
 
         let requestDeclineCheckbox = document.createElement("input");
         requestDeclineCheckbox.value = request.id;
@@ -92,9 +102,8 @@ function renderPendingRequests(jsonPendingRequests){
 
         let requestDeclineLabel = document.createElement("label");
         requestDeclineLabel.innerText = "Decline";
-
     
-        pendingRequestNode.append(requestLabel, requestAcceptCheckbox, requestAcceptLabel,
+        pendingRequestNode.append(requestSpan, requestAcceptCheckbox, requestAcceptLabel,
             requestDeclineCheckbox, requestDeclineLabel, breakLine);
     }
 }

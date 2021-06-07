@@ -1,6 +1,10 @@
-document.getElementById("login-nav-opt").addEventListener("click", openModal);
-document.getElementById("close-btn").addEventListener("click", closeModal);
-document.getElementById("submit-btn").addEventListener("click", attemptLogin);
+if(location.pathname.includes("home_page.html")){
+    document.getElementById("login-nav-opt").addEventListener("click", openModal);
+    document.getElementById("close-btn").addEventListener("click", closeModal);
+    document.getElementById("submit-btn").addEventListener("click", attemptLogin);
+}else{
+    toggleLoginToLogout();
+}
 
 function openModal(){
     if(!sessionStorage.getItem("token")){
@@ -56,14 +60,18 @@ function toggleLoginToLogout(){
 function logout(){
     sessionStorage.removeItem("token");
     toggleLogoutToLogin();
-    updateDisplay();
+    if(location.pathname.includes("home_page.html")){
+        updateDisplay();
+    }else{
+        location.assign("home_page.html");
+    }
 }
 
 function toggleLogoutToLogin(){
     let loginBtn = document.getElementById("login-nav-opt");
     loginBtn.innerText = "Log in";
-    loginBtn.addEventListener("click", openModal);
     loginBtn.removeEventListener("click", logout);
+    loginBtn.addEventListener("click", openModal);
 }
 
 /*

@@ -5,19 +5,30 @@ window.onload = function () {
     // getManagerAccount(updateDisplay)
     // sessionStorage.setItem("token", "1:employee")
     // sessionStorage.removeItem("token");
-    getPendingRequestsByEmployeeId(0);
-    getResolvedRequestsByEmployeeId(0);
-    updateDisplay();
+    updateRequestTables();
+    updateNavbar();
+    toggleLoginToLogout
 }
 
-function updateDisplay(){
+function updateRequestTables(){
     // const homeHeading = document.getElementById("home-heading");
     // homeHeading.innerText = head_text;
     
     // const homeBody = document.getElementById("home-body");
     // homeBody.innerText = head_text;
-
-    updateNavbar();
+    let pendingRequestNode = document.getElementById("pending-requests");
+    // console.log(pendingRequestNode.children)
+    // console.log(pendingRequestNode.innerHTML);
+    // for(let child of pendingRequestNode.children){
+    //     child.remove();
+    //     // child.parentElement.removeChild(child);
+    // }
+    // console.log(pendingRequestNode.childNodes)
+    pendingRequestNode.innerHTML = pendingRequestNode.innerHTML.replace(new RegExp(".*", 'i'), "");
+    // console.log(pendingRequestNode.innerHTML);
+    let id = sessionStorage.getItem("token").split(":")[0];
+    getPendingRequestsByEmployeeId(id);
+    getResolvedRequestsByEmployeeId(id);
     // displayLoggedInUser();
 }
 
@@ -37,7 +48,7 @@ function updateNavbar(){
             document.getElementById('manager-requests-nav-opt').removeAttribute("hidden");
         }
         // toggleLoginToLogout();
-        // document.getElementById('login-nav-opt').removeAttribute("hidden");
+        document.getElementById('login-nav-opt').removeAttribute("hidden");
         // document.getElementById('login-nav-opt').setAttribute("hidden", "true");
     }
 }
@@ -84,7 +95,8 @@ function getResolvedRequestsByEmployeeId(id){
 function renderPendingRequests(jsonPendingRequests){
 
     pendingRequests = JSON.parse(jsonPendingRequests);
-  
+    pendingRequests.sort((a, b) => a.id - b.id);
+
     for (let request of pendingRequests) {
     //   let muffinCheckbox = document.createElement("input");
     //   muffinCheckbox.value = muffin.id;
@@ -94,10 +106,14 @@ function renderPendingRequests(jsonPendingRequests){
       let breakLine = document.createElement("br");
   
       let requestLabel = document.createElement("label");
-      requestLabel.innerText =
-        `ID: ${request.id} | Amount: ${request.amount} | Status: ${request.status}`;
+      requestLabel.style.whiteSpace = "pre";
+      requestLabel.style.fontFamily = "monospace"
+      let requestIdStr = `Request ID: ${request.id}`.padEnd(18, " ");
+      let amountStr = `| Amount: ${request.amount}`.padEnd(16, " ");
+      let statusStr = `| Status: ${request.status}`.padEnd(18, " ");
+      requestLabel.innerText = requestIdStr + amountStr + statusStr;
+
       let pendingRequestNode = document.getElementById("pending-requests");
-  
       pendingRequestNode.append(requestLabel, breakLine);
     }
 }
@@ -105,16 +121,21 @@ function renderPendingRequests(jsonPendingRequests){
 function renderResolvedRequests(jsonResolvedRequests){
   
     resolvedRequests = JSON.parse(jsonResolvedRequests);
+    resolvedRequests.sort((a, b) => a.id - b.id);
   
     for (let request of resolvedRequests) {
   
       let breakLine = document.createElement("br");
   
       let requestLabel = document.createElement("label");
-      requestLabel.innerText =
-        `ID: ${request.id} | Amount: ${request.amount} | Status: ${request.status}`;
+      requestLabel.style.whiteSpace = "pre";
+      requestLabel.style.fontFamily = "monospace"
+      let requestIdStr = `Request ID: ${request.id}`.padEnd(18, " ");
+      let amountStr = `| Amount: ${request.amount}`.padEnd(16, " ");
+      let statusStr = `| Status: ${request.status}`.padEnd(18, " ");
+      requestLabel.innerText = requestIdStr + amountStr + statusStr;
+
       let resolvedRequestNode = document.getElementById("resolved-requests");
-  
       resolvedRequestNode.append(requestLabel, breakLine);
     }
 }
@@ -122,18 +143,19 @@ function renderResolvedRequests(jsonResolvedRequests){
 function createRequest(){
 
     let token = sessionStorage.getItem("token");
-    let id = 0
+    let request_id = 0
     let amount = document.getElementById("reimbursement-amount").value;
     let type = "CREATE_REQUEST";
-    let reimbursementToken = `${id}:${amount}:${type}`;
+    let reimbursementToken = `${request_id}:${amount}:${type}`;
 
     createReimbursementRequest(token, reimbursementToken, requestCreationSuccessful, requestCreationFailed);
 }
 
 function requestCreationSuccessful(){
-    window.confirm("Succesfully created request!");
+    window.alert("Succesfully created request!");
+    updateRequestTables();
 }
 
 function requestCreationFailed(){
-    window.confirm("Unable to create request!");
+    window.alert("Unable to create request!");
 }

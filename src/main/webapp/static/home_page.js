@@ -14,7 +14,7 @@ function updateDisplay(){
     
     // const homeBody = document.getElementById("home-body");
     // homeBody.innerText = head_text;
-
+    
     updateNavbar();
     displayLoggedInUser();
 }

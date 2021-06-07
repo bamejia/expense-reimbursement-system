@@ -60,7 +60,7 @@ public class ReimbursementRequestInfoServlet extends HttpServlet{
 				if(rToken.getType() == ReimbursementTokenType.PENDING_EMPLOYEE_REQUESTS) {
 					requestIsValid = true;
 					Collection<ReimbursementRequest> rRequests = rRequestDAO
-							.getPendingRequestsByEmployeeId(employee.getId());
+							.getPendingRequestsByEmployeeId(rToken.getId());
 					try(PrintWriter pw = response.getWriter();){
 						ObjectMapper om = new ObjectMapper();
 						String rRequestsJSON = om.writeValueAsString(rRequests);
@@ -70,7 +70,7 @@ public class ReimbursementRequestInfoServlet extends HttpServlet{
 				}else if(rToken.getType() == ReimbursementTokenType.RESOLVED_EMPLOYEE_REQUESTS) {
 					requestIsValid = true;
 					Collection<ReimbursementRequest> rRequests = rRequestDAO
-							.getResolvedRequestsByEmployeeId(employee.getId());
+							.getResolvedRequestsByEmployeeId(rToken.getId());
 					try(PrintWriter pw = response.getWriter();){
 						ObjectMapper om = new ObjectMapper();
 						String rRequestsJSON = om.writeValueAsString(rRequests);

@@ -18,7 +18,7 @@ public class ConnectionUtil {
 		}
 
 		
-		String url = System.getenv("DB_URL"); // best not to hard code in your db credentials ! 
+		String url = System.getenv("DB_EXPR_URL"); // best not to hard code in your db credentials ! 
 		String username = System.getenv("DB_USERNAME");
 		String password = System.getenv("DB_PASSWORD");
 		if(connection == null || connection.isClosed()) {
